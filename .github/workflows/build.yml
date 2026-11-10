@@ -1,0 +1,28 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test the bin logic on the PC
+        run: |
+          g++ -std=c++11 -Wall -Wextra -Werror -I smart_bin test/test_bin_logic.cpp -o test_bin_logic
+          ./test_bin_logic
+
+  compile-sketch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile for Arduino Uno
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: arduino:avr:uno
+          sketch-paths: |
+            - smart_bin
+          libraries: |
+            - name: Servo

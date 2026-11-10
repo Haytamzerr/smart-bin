@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Smart Bin",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 0, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "front", "top": -120, "left": -40, "attrs": { "distance": "100" } },
+    { "type": "wokwi-hc-sr04", "id": "inside", "top": -120, "left": 200, "attrs": { "distance": "35" } },
+    { "type": "wokwi-servo", "id": "lid", "top": 140, "left": 400, "attrs": {} },
+    { "type": "wokwi-led", "id": "green", "top": 20, "left": 430, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "yellow", "top": 20, "left": 480, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "red", "top": 20, "left": 530, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 90, "left": 420, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 90, "left": 470, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 90, "left": 520, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": -110, "left": 430, "attrs": { "volume": "0.2" } }
+  ],
+  "connections": [
+    [ "front:VCC", "uno:5V", "red", [] ],
+    [ "front:GND", "uno:GND.1", "black", [] ],
+    [ "front:TRIG", "uno:9", "orange", [] ],
+    [ "front:ECHO", "uno:8", "purple", [] ],
+    [ "inside:VCC", "uno:5V", "red", [] ],
+    [ "inside:GND", "uno:GND.1", "black", [] ],
+    [ "inside:TRIG", "uno:11", "orange", [] ],
+    [ "inside:ECHO", "uno:10", "purple", [] ],
+    [ "lid:V+", "uno:5V", "red", [] ],
+    [ "lid:GND", "uno:GND.2", "black", [] ],
+    [ "lid:PWM", "uno:6", "blue", [] ],
+    [ "green:A", "uno:3", "green", [] ],
+    [ "green:C", "r1:1", "black", [] ],
+    [ "r1:2", "uno:GND.3", "black", [] ],
+    [ "yellow:A", "uno:4", "yellow", [] ],
+    [ "yellow:C", "r2:1", "black", [] ],
+    [ "r2:2", "uno:GND.3", "black", [] ],
+    [ "red:A", "uno:5", "red", [] ],
+    [ "red:C", "r3:1", "black", [] ],
+    [ "r3:2", "uno:GND.3", "black", [] ],
+    [ "buzzer:2", "uno:7", "gray", [] ],
+    [ "buzzer:1", "uno:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}

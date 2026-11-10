@@ -1,0 +1,5 @@
+test_bin_logic
+*.o
+*.exe
+build/
+.vscode/
