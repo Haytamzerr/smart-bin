@@ -15,7 +15,7 @@ jobs:
           ./test_bin_logic
 
   compile-sketch:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # the compile action's Python setup does not support newer runners yet
     steps:
       - uses: actions/checkout@v4
       - name: Compile for Arduino Uno
